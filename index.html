@@ -18,46 +18,13 @@
 
 <body style='position: absolute; top: 0; left: 0; width: 100%; height: 100%; margin : 0px; overflow: hidden;'>
     <style>
-        .arjs-loader {
-            margin: 0 auto;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        #arjs-loader { 
+			width: 100%;
+			height: 100vh;
         }
-        .arjs-loader-spinner {
-            z-index: 10;
-            -webkit-transform: spin 1s linear infinite;
-            animation: spin 1s linear infinite;
-            border: 3px solid #ddd;
-            border-top: 3px solid #42a5f5;
-            border-radius: 50%;
-            height: 75px;
-            width: 75px;
-        }
-
-        @-webkit-keyframes spin {
-            to {
-                border-top-color: #42a5f5;
-                -webkit-transform: rotate(360deg);
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes spin {
-            to {
-                border-top-color: #42a5f5;
-                -webkit-transform: rotate(360deg);
-                transform: rotate(360deg);
-            }
-        }
-    </style>
-    <div class="arjs-loader">
-        <div class="arjs-loader-spinner"></div>
+        </style>
+    <div id="arjs-loader">
+      
     </div>
     <script>
         //////////////////////////////////////////////////////////////////////////////////
@@ -83,7 +50,7 @@
         // renderer.domElement.style.position = 'absolute'
         // renderer.domElement.style.top = '0px'
         // renderer.domElement.style.left = '0px'
-        document.body.appendChild( renderer.domElement );
+        document.querySelector('#arjs-loader').appendChild( renderer.domElement );
 
         // init scene and camera
         var scene = new THREE.Scene();
@@ -111,9 +78,9 @@
 
         arToolkitSource.init(function onReady(){
             // use a resize to fullscreen mobile devices
-           
+            setTimeout(function() {
                 onResize()
-            
+            }, 1000);
         })
 
         // handle resize
@@ -127,8 +94,8 @@
         })
 
         function onResize(){
-		// renderer.setSize(window.innerWidth, window.innerHeight);
-		// camera.aspect = window.innerWidth / window.innerHeight;
+			renderer.setSize(window.innerWidth, window.innerHeight);
+		camera.aspect = window.innerWidth / window.innerHeight;
 		// camera.updateProjectionMatrix();
 
 
@@ -195,9 +162,9 @@
             root.matrixAutoUpdate = false;
             root.add(model);
 
-            model.position.z = -20;
-            model.position.x = 10;
-            model.position.y = 10;
+            model.position.z = -2;
+            model.position.x = 1;
+            model.position.y = 1;
 
 
             //////////////////////////////////////////////////////////////////////////////////
