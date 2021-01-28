@@ -19,8 +19,8 @@ class Scene1 extends Scene {
 		// console.log(this.container.clientWidth)
 		this.arToolkitSource = new THREEx.ArToolkitSource({
             sourceType : 'webcam',
-            // sourceWidth: this.container.clientWidth,
-			// sourceHeight: this.container.clientHeight,
+			sourceWidth: 480,
+			sourceHeight: 640,
 			displayWidth: this.container.clientWidth,
 			displayHeight: this.container.clientHeight,
 		})
@@ -28,12 +28,12 @@ class Scene1 extends Scene {
             // use a resize to fullscreen mobile devices
             setTimeout(() =>{
                 this.onResize();
-            }, 1000);
+            }, 100);
 		})
 		 this.arToolkitContext = new THREEx.ArToolkitContext({			 
 			detectionMode: 'mono',
 			maxDetectionRate:60,
-			matrixCodeType: '4x4',
+			matrixCodeType: '3x3',
             canvasWidth: this.container.clientWidth,
             canvasHeight: this.container.clientHeight,
         }, {
@@ -46,6 +46,7 @@ class Scene1 extends Scene {
         })
 		this.markerControls = new THREEx.ArMarkerControls(this.arToolkitContext, this.camera, {
 			type : 'nft',
+			
 			smooth: true,
             descriptorsUrl : './assets/dataNFT/IMG_20210127_133219',
             changeMatrixMode: 'cameraTransformMatrix'
@@ -109,7 +110,7 @@ class Scene1 extends Scene {
 	}
 	onResize(){
 		this.arToolkitSource.onResizeElement()
-		this.arToolkitSource.copyElementSizeTo(this.container)
+		this.arToolkitSource.copyElementSizeTo(this.renderer.domElement)
 		if( this.arToolkitContext.arController !== null ){
 			this.arToolkitSource.copyElementSizeTo(this.arToolkitContext.arController.canvas)
 		}
