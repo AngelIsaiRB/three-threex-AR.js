@@ -101,8 +101,9 @@
 
         arToolkitSource.init(function onReady(){
             // use a resize to fullscreen mobile devices
-            
+            setTimeout(function() {
                 onResize()
+            }, 1000);
         })
 
         // handle resize
@@ -129,7 +130,6 @@
 
         // create atToolkitContext
         var arToolkitContext = new THREEx.ArToolkitContext({
-            cameraParametersUrl: './assets/dataNFT/camera_para.dat',
             detectionMode: 'mono',
             maxDetectionRate: 60,
             canvasWidth: 2340,
