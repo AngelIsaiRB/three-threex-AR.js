@@ -17,14 +17,15 @@ export class App {
 		this.renderer = new WebGLRenderer({
 			antialias: true,
 			alpha:true,
+			precision: 'mediump',
 		})
 		this.renderer.setPixelRatio(window.devicePixelRatio);
 		this.renderer.setSize( window.innerWidth, window.innerHeight );
 		// sRGBEncoding
-		this.renderer.outputEncoding = sRGBEncoding;
+		// this.renderer.outputEncoding = sRGBEncoding;
 		
 		// ## Light's config
-		this.renderer.physicallyCorrectLights = true;
+		// this.renderer.physicallyCorrectLights = true;
 		
 		this.container.appendChild(this.renderer.domElement);
 
