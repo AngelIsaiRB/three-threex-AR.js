@@ -1,25 +1,3 @@
- <!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>StackBlocks</title>
-	<link rel="stylesheet" href="./style/index.css">
-	<script src='./scripts/vendor/three.js/build/three.min.js'></script>
-	
-	<script src='./scripts/vendor/three.js/GLTFLoader.js'></script>
-	
-	<script src='./scripts/build-ar/ar-nft.js'></script>
-</head>
-
-<body>
-	<div id="game-container"></div>
-</body>
-</html>  -->
-
-
 <!DOCTYPE html>
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
@@ -116,19 +94,15 @@
         ////////////////////////////////////////////////////////////////////////////////
         //          handle arToolkitSource
         ////////////////////////////////////////////////////////////////////////////////
-        console.log(renderer.domElement.width)
-        console.log(renderer.domElement.height)
+
         var arToolkitSource = new THREEx.ArToolkitSource({
             sourceType : 'webcam',
-            sourceWidth: renderer.domElement.width,
-            sourceHeight: renderer.domElement.height,
         })
 
         arToolkitSource.init(function onReady(){
             // use a resize to fullscreen mobile devices
-            setTimeout(function() {
+            
                 onResize()
-            }, 1000);
         })
 
         // handle resize
@@ -155,12 +129,14 @@
 
         // create atToolkitContext
         var arToolkitContext = new THREEx.ArToolkitContext({
+            cameraParametersUrl: './assets/dataNFT/camera_para.dat',
             detectionMode: 'mono',
-            canvasWidth: renderer.domElement.width,
-            canvasHeight: renderer.domElement.height,
+            maxDetectionRate: 60,
+            canvasWidth: 2340,
+            canvasHeight: 1080,
         }, {
-            sourceWidth: renderer.domElement.width,
-            sourceHeight: renderer.domElement.height,
+            sourceWidth: 2340,
+            sourceHeight: 1080,
         })
 
         // initialize it
@@ -240,13 +216,5 @@
     );
     </script>
 </body>
-
-
-
-
-
-
-
-
 
 
