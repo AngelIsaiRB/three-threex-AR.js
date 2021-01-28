@@ -67,7 +67,9 @@
         var renderer = new THREE.WebGLRenderer({
             antialias: true,
             alpha: true,
-            precision: 'mediump',
+			precision: 'highp',
+			// mediump
+			// lowp
         });
 
         var clock = new THREE.Clock();
@@ -77,8 +79,8 @@
         renderer.setPixelRatio(window.devicePixelRatio);
 
         renderer.setClearColor(new THREE.Color('lightgrey'), 0)
-        renderer.setSize( window.innerWidth, window.innerHeight );
-        renderer.domElement.style.position = 'absolute'
+        // renderer.setSize( window.innerWidth, window.innerHeight );
+        // renderer.domElement.style.position = 'absolute'
         renderer.domElement.style.top = '0px'
         renderer.domElement.style.left = '0px'
         document.body.appendChild( renderer.domElement );
