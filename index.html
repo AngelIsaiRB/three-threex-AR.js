@@ -81,8 +81,8 @@
         renderer.setClearColor(new THREE.Color('lightgrey'), 0)
         // renderer.setSize( window.innerWidth, window.innerHeight );
         // renderer.domElement.style.position = 'absolute'
-        renderer.domElement.style.top = '0px'
-        renderer.domElement.style.left = '0px'
+        // renderer.domElement.style.top = '0px'
+        // renderer.domElement.style.left = '0px'
         document.body.appendChild( renderer.domElement );
 
         // init scene and camera
@@ -105,8 +105,8 @@
 
         var arToolkitSource = new THREEx.ArToolkitSource({
             // sourceType : 'webcam',
-            sourceWidth: 1080,
-            sourceHeight: 720,
+            // sourceWidth: 1080,
+            // sourceHeight: 720,
         })
 
         arToolkitSource.init(function onReady(){
@@ -146,11 +146,11 @@
         // create atToolkitContext
         var arToolkitContext = new THREEx.ArToolkitContext({
             detectionMode: 'mono',
-            canvasWidth: 1080,
-            canvasHeight: 720,
+            // canvasWidth: 1080,
+            // canvasHeight: 720,
         }, {
-            sourceWidth: 1080,
-            sourceHeight: 720,
+            // sourceWidth: 1080,
+            // sourceHeight: 720,
         })
 
         // initialize it
