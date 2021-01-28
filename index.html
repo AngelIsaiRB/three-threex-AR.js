@@ -119,8 +119,8 @@
 
         var arToolkitSource = new THREEx.ArToolkitSource({
             sourceType : 'webcam',
-            sourceWidth: 480,
-            sourceHeight: 640,
+            sourceWidth: 2340,
+            sourceHeight: 1080,
         })
 
         arToolkitSource.init(function onReady(){
@@ -155,11 +155,11 @@
         // create atToolkitContext
         var arToolkitContext = new THREEx.ArToolkitContext({
             detectionMode: 'mono',
-            canvasWidth: 480,
-            canvasHeight: 640,
+            canvasWidth: 2340,
+            canvasHeight: 1080,
         }, {
-            sourceWidth: 480,
-            sourceHeight: 640,
+            sourceWidth: 2340,
+            sourceHeight: 1080,
         })
 
         // initialize it
