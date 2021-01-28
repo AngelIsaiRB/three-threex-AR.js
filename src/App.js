@@ -1,4 +1,4 @@
-import { PerspectiveCamera,  WebGLRenderer, sRGBEncoding } from 'three';
+import { PerspectiveCamera,  WebGLRenderer, sRGBEncoding, Camera } from 'three';
 import Scene1 from './scenes/Scene1';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
 
@@ -8,10 +8,10 @@ export class App {
 
 		
 		// ## Camera's config
-		this.camera = new PerspectiveCamera(35, this.container.clientWidth / this.container.clientHeight, 0.1, 10000);
-		this.camera.position.set(10, 10, 10);
-		this.camera.lookAt(0, 0, 0);
-		this.control = new OrbitControls(this.camera, this.container);
+		this.camera = new Camera();
+		// this.camera.position.set(10, 10, 10);
+		// this.camera.lookAt(0, 0, 0);
+		// this.control = new OrbitControls(this.camera, this.container);
 		// ## Renderer's config
 		
 		this.renderer = new WebGLRenderer({
@@ -19,7 +19,7 @@ export class App {
 			alpha:true,
 		})
 		this.renderer.setPixelRatio(window.devicePixelRatio);
-		
+		this.renderer.setSize( window.innerWidth, window.innerHeight );
 		// sRGBEncoding
 		this.renderer.outputEncoding = sRGBEncoding;
 		
@@ -28,7 +28,7 @@ export class App {
 		
 		this.container.appendChild(this.renderer.domElement);
 
-		this.scene = new Scene1(this.camera, this.container);
+		this.scene = new Scene1(this.camera, this.container,this.renderer);
 
 
 		this.onResize();
@@ -38,15 +38,15 @@ export class App {
 	onResize() {
 		this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
 		this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
-		this.camera.updateProjectionMatrix();
+		// this.camera.updateProjectionMatrix();
 	}
 
 	render() {
-		this.renderer.render(this.scene, this.camera);
+		// this.renderer.render(this.scene, this.camera);
 
 		// Updates here
 		this.scene.update();
 
-		this.renderer.setAnimationLoop(() => this.render());
+		// this.renderer.setAnimationLoop(() => this.render());
 	}
 }
