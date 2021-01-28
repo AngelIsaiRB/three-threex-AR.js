@@ -19,8 +19,8 @@ class Scene1 extends Scene {
 		// console.log(this.container.clientWidth)
 		this.arToolkitSource = new THREEx.ArToolkitSource({
             sourceType : 'webcam',
-			sourceWidth: 480,
-			sourceHeight: 640,
+			sourceWidth: this.container.clientWidth,
+			sourceHeight: this.container.clientWidth,
 			displayWidth: this.container.clientWidth,
 			displayHeight: this.container.clientHeight,
 		})
