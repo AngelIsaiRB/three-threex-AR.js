@@ -1,7 +1,7 @@
-// import { App } from './App';
+import { App } from './App';
 
-// const app = new App(document.querySelector('#game-container'));
+const app = new App(document.querySelector('#game-container'));
 
-// window.addEventListener('resize', () => {
-// 	app.onResize();
-// });
+window.addEventListener('resize', () => {
+	app.onResize();
+});
