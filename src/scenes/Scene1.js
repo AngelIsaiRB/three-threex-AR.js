@@ -15,14 +15,12 @@ class Scene1 extends Scene {
 	create() {
 		// console.log(window.innerWidth)
 		// console.log(this.container.clientWidth)
-		var clock = new Clock();
+		this.clock  = new Clock();
 		// console.log(this.container.clientWidth)
 		this.arToolkitSource = new THREEx.ArToolkitSource({
             sourceType : 'webcam',
-			sourceWidth: this.container.clientWidth,
-			sourceHeight: this.container.clientWidth,
-			displayWidth: this.container.clientWidth,
-			displayHeight: this.container.clientHeight,
+			sourceWidth: 480,
+            sourceHeight: 640,
 		})
 		this.arToolkitSource.init(()=>{
             // use a resize to fullscreen mobile devices
@@ -34,12 +32,12 @@ class Scene1 extends Scene {
 			detectionMode: 'mono',
 			maxDetectionRate:60,
 			matrixCodeType: '3x3',
-            canvasWidth: this.container.clientWidth,
-            canvasHeight: this.container.clientHeight,
+            canvasWidth: 480,
+            canvasHeight: 640,
         }, {
-            sourceWidth: this.container.clientWidth,
-            sourceHeight: this.container.clientHeight,
-		})
+            sourceWidth: 480,
+            sourceHeight: 640,
+        })
 		this.arToolkitContext.init( ()=>{
             // copy projection matrix to camera
             this.camera.projectionMatrix.copy( this.arToolkitContext.getProjectionMatrix() );
@@ -83,7 +81,7 @@ class Scene1 extends Scene {
 
                 if (mixers.length > 0) {
                     for (var i = 0; i < mixers.length; i++) {
-                        mixers[i].update(clock.getDelta());
+                        mixers[i].update(this.clock.getDelta());
                     }
                 }
 

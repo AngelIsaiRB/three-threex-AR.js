@@ -21,6 +21,9 @@ export class App {
 		})
 		this.renderer.setPixelRatio(window.devicePixelRatio);
 		this.renderer.setSize( window.innerWidth, window.innerHeight );
+		this.renderer.domElement.style.position = 'absolute'
+        this.renderer.domElement.style.top = '0px'
+        this.renderer.domElement.style.left = '0px'
 		// sRGBEncoding
 		// this.renderer.outputEncoding = sRGBEncoding;
 		
@@ -37,8 +40,8 @@ export class App {
 	}
 	
 	onResize() {
-		this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
-		this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
+		// this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
+		// this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
 		// this.camera.updateProjectionMatrix();
 	}
 
