@@ -111,9 +111,9 @@
 
         arToolkitSource.init(function onReady(){
             // use a resize to fullscreen mobile devices
-            setTimeout(function() {
+           
                 onResize()
-            }, 1000);
+            
         })
 
         // handle resize
@@ -127,8 +127,8 @@
         })
 
         function onResize(){
-			renderer.setSize(window.innerWidth, window.innerHeight);
-		camera.aspect = window.innerWidth / window.innerHeight;
+		// renderer.setSize(window.innerWidth, window.innerHeight);
+		// camera.aspect = window.innerWidth / window.innerHeight;
 		// camera.updateProjectionMatrix();
 
 
