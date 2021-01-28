@@ -10,13 +10,16 @@ class Scene1 extends Scene {
 	}
 
 	create() {
-
+		// console.log(window.innerWidth)
+		// console.log(this.container.clientWidth)
 		var clock = new Clock();
-
+		// console.log(this.container.clientWidth)
 		this.arToolkitSource = new THREEx.ArToolkitSource({
             sourceType : 'webcam',
             sourceWidth: this.container.clientWidth,
-            sourceHeight: this.container.clientWidth,
+			sourceHeight: this.container.clientHeight,
+			displayWidth: this.container.clientWidth,
+			displayHeight: this.container.clientHeight,
 		})
 		this.arToolkitSource.init(()=>{
             // use a resize to fullscreen mobile devices
@@ -25,12 +28,12 @@ class Scene1 extends Scene {
             }, 1000);
 		})
 		 this.arToolkitContext = new THREEx.ArToolkitContext({
-            detectionMode: 'mono',
+            detectionMode: 'mono_and_matrix',
             canvasWidth: this.container.clientWidth,
-            canvasHeight: this.container.clientWidth,
+            canvasHeight: this.container.clientHeight,
         }, {
             sourceWidth: this.container.clientWidth,
-            sourceHeight: this.container.clientWidth,
+            sourceHeight: this.container.clientHeight,
 		})
 		this.arToolkitContext.init( ()=>{
             // copy projection matrix to camera
@@ -46,10 +49,10 @@ class Scene1 extends Scene {
 	}
 	onResize(){
 		this.arToolkitSource.onResizeElement()
-		this.arToolkitSource.copyElementSizeTo(this.container)
-		if( this.arToolkitContext.arController !== null ){
-			this.arToolkitSource.copyElementSizeTo(this.arToolkitContext.arController.canvas)
-		}
+		// this.arToolkitSource.copyElementSizeTo(this.container)
+		// if( this.arToolkitContext.arController !== null ){
+		// 	this.arToolkitSource.copyElementSizeTo(this.arToolkitContext.arController.canvas)
+		// }
 	}
 	update() {
 
