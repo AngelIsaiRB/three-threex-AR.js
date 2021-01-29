@@ -132,11 +132,11 @@
         var arToolkitContext = new THREEx.ArToolkitContext({
             detectionMode: 'mono',
             maxDetectionRate: 60,
-            canvasWidth: 2340,
-            canvasHeight: 1080,
+            canvasWidth: 480,
+            canvasHeight: 640,
         }, {
-            sourceWidth: 2340,
-            sourceHeight: 1080,
+            canvasWidth: 480,
+            canvasHeight: 640,
         })
 
         // initialize it
@@ -181,8 +181,8 @@
             root.matrixAutoUpdate = false;
             root.add(model);
 
-            model.position.z = -5 ;
-            model.position.x = -5 ;
+            model.position.z = -50 ;
+            model.position.x = 50 ;
             model.position.y = -5 ;
 
 
