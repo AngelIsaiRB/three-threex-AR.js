@@ -62,6 +62,7 @@
             antialias: true,
             alpha: true,
             precision: 'mediump',
+            logarithmicDepthBuffer: true
         });
 
         var clock = new THREE.Clock();
@@ -168,21 +169,23 @@
         var threeGLTFLoader = new THREE.GLTFLoader();
         var model;
 
-        threeGLTFLoader.load("./assets/models/Flamingo.glb", function (gltf) {
+        threeGLTFLoader.load("./assets/botella/scene.gltf", function (gltf) {
             model = gltf.scene.children[0];
-            model.name = 'Flamingo';
-
-            var animation = gltf.animations[0];
-            var mixer = new THREE.AnimationMixer(model);
-            mixers.push(mixer);
-            var action = mixer.clipAction(animation);
-            action.play();
-
-            root.matrixAutoUpdate = false;
+            const liquid = gltf.scene.children[0].getObjectByName('Liquid_Beer_Liquid_0');
+			const bottle =gltf.scene.children[0].getObjectByName('Bottle_Beer_Bottle_0');
+			// this.bottle.material.opacity=1;
+			// this.bottle.material.transparent = false;			
+			bottle.renderOrder=0;
+            liquid.renderOrder=-1;
+            liquid.material.side = THREE.FrontSide;
+			bottle.material.side = THREE.BackSide;
             root.add(model);
-
-            model.position.z = -50 ;
-            model.position.x = 50 ;
+            model.rotation.x = 180 * Math.PI / 180
+            model.scale.x =600;
+            model.scale.y =600;
+            model.scale.z =600;
+            model.position.z = -10 ;
+            model.position.x = 90 ;
             model.position.y = -5 ;
 
 
